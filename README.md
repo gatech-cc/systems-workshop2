@@ -1,1 +1,1 @@
-# Workshop 6: Implementing Master node of Map Reduce
+# Workshop 6: Implementing the Master node for Map Reduce
