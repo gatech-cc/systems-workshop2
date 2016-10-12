@@ -26,7 +26,7 @@ git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
 cd grpc
 git submodule update --init
 make
-sudo checkinstall grpc
+sudo checkinstall -y --pkgname grpc
 echo "Installing Protobuf"
 cd ~/src/grpc/third_party/protobuf
 make 
