@@ -31,7 +31,7 @@ echo "Installing Protobuf"
 cd ~/src/grpc/third_party/protobuf
 make 
 sudo checkinstall -y --pkgname protobuf
-echo "Installing GLoc"
+echo "Installing GLog"
 cd ~/src/
 git clone https://github.com/google/glog.git
 cd glog
