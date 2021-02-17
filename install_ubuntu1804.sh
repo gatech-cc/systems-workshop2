@@ -16,12 +16,13 @@ make -j${numprocs}
 sudo checkinstall -y --pkgname conservator
 cd ~/src
 echo "Installing GRPC"
-git clone -b v1.35.0 https://github.com/grpc/grpc
+git clone --recurse-submodules -b v1.35.0 https://github.com/grpc/grpc
 cd grpc
-git submodule update --init
 mkdir -p cmake/build
 cd cmake/build
-cmake ../..
+cmake -DgRPC_INSTALL=ON \
+      -DgRPC_BUILD_TESTS=OFF \
+      ../..
 make -j${numprocs}
 sudo checkinstall -y --pkgname grpc
 sudo ldconfig
