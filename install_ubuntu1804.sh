@@ -29,11 +29,9 @@ echo "Installing GLog"
 cd ~/src/
 git clone https://github.com/google/glog.git
 cd glog
-mkdir build && cd build
-export CXXFLAGS="-fPIC" 
-cmake ..
-make -j${numprocs}
-make test
-sudo checkinstall -y --pkgname glog
+cmake -H. -Bbuild -G "Unix Makefiles"
+cmake --build build
+cmake --build build --target test
+sudo cmake --build build --target install
 echo "export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH" >> ~/.bashrc
 source ~/.bashrc
