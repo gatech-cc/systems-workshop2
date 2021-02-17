@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 sudo apt-get update
-sudo apt-get install -y zookeeper libzookeeper2 zookeeperd zookeeper-bin libzookeeper-mt-dev ant check build-essential autoconf libtool pkg-config checkinstall git
+sudo apt-get install -y g++ zookeeper libzookeeper2 zookeeperd zookeeper-bin libzookeeper-mt-dev ant check build-essential autoconf libtool pkg-config checkinstall git
 echo "Instaling cmake 3.0+"
 mkdir -p ~/src
 cd ~/src
