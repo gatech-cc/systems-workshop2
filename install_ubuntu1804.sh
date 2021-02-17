@@ -7,6 +7,7 @@ sudo apt-get install -y g++ zookeeper libzookeeper-mt2 zookeeperd zookeeper-bin 
 echo "PATH=/usr/local/bin:$PATH" >> ~/.profile
 source ~/.profile
 echo "Installing Conservator C++ Zookeeper Wrapper"
+mkdir -p ~/src
 cd ~/src
 git clone https://github.gatech.edu/cs8803-SIC/conservator.git
 cd conservator
