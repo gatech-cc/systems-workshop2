@@ -24,14 +24,6 @@ cd cmake/build
 cmake ../..
 make -j${numprocs}
 sudo checkinstall -y --pkgname grpc
-echo "Installing Protobuf"
-cd ~/src/grpc/third_party/protobuf
-git submodule update --init --recursive
-./autogen.sh
-./configure
-make -j${numprocs}
-make check
-sudo checkinstall -y --pkgname protobuf
 sudo ldconfig
 echo "Installing GLog"
 cd ~/src/
