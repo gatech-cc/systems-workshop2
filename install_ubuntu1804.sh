@@ -1,18 +1,9 @@
 #!/usr/bin/env bash
+
 numprocs=$(cat /proc/cpuinfo | grep processor | wc -l)
 
 sudo apt-get update
-sudo apt-get install -y g++ zookeeper libzookeeper2 zookeeperd zookeeper-bin libzookeeper-mt-dev ant check build-essential autoconf libtool pkg-config checkinstall git
-echo "Instaling cmake 3.0+"
-mkdir -p ~/src
-cd ~/src
-sudo apt-get remove -y cmake
-wget http://www.cmake.org/files/v3.2/cmake-3.2.2.tar.gz
-tar xf cmake-3.2.2.tar.gz
-cd cmake-3.2.2
-./configure
-make -j${numprocs}
-sudo checkinstall -y --pkgname cmake
+sudo apt-get install -y g++ zookeeper libzookeeper-mt2 zookeeperd zookeeper-bin libzookeeper-mt-dev ant check build-essential autoconf libtool pkg-config checkinstall git zlib1g cmake
 echo "PATH=/usr/local/bin:$PATH" >> ~/.profile
 source ~/.profile
 echo "Installing Conservator C++ Zookeeper Wrapper"
@@ -24,15 +15,23 @@ make -j${numprocs}
 sudo checkinstall -y --pkgname conservator
 cd ~/src
 echo "Installing GRPC"
-git clone -b $(curl -L http://grpc.io/release) https://github.com/grpc/grpc
+git clone -b v1.35.0 https://github.com/grpc/grpc
 cd grpc
 git submodule update --init
+mkdir -p cmake/build
+cd cmake/build
+cmake ../..
 make -j${numprocs}
 sudo checkinstall -y --pkgname grpc
 echo "Installing Protobuf"
 cd ~/src/grpc/third_party/protobuf
+git submodule update --init --recursive
+./autogen.sh
+./configure
 make -j${numprocs}
+make check
 sudo checkinstall -y --pkgname protobuf
+sudo ldconfig
 echo "Installing GLog"
 cd ~/src/
 git clone https://github.com/google/glog.git
