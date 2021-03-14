@@ -19,7 +19,7 @@ source ~/.profile
 echo "Installing Conservator C++ Zookeeper Wrapper"
 mkdir -p ~/src
 cd ~/src
-git clone https://github.gatech.edu/cs8803-SIC/conservator.git
+git clone https://github.com/gatech-cc/conservator.git
 cd conservator
 cmake .
 make -j${numprocs}
