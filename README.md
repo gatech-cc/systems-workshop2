@@ -1,4 +1,4 @@
-# Workshop 6: Implementing the Master node for Map Reduce
+# Workshop 2: Implementing the Master node for Map Reduce
 
 We suggest you to use a VM with Ubuntu 18.04 for the project development.
 
